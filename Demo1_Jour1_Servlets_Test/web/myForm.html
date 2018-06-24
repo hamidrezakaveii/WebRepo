@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>My Form:</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>My Form:</h1>
+        <form name="myform" action="form" method="POST">
+            <table border="2">
+                <thead>
+                    <tr>
+                        <th colspan="2">Choix cours et Mode de paiement</th>             
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Nom</td>
+                        <td><input type="text" name="name" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td>Cours</td>
+                        <td><input type="checkbox" name="cours" value="Html" />Html<br />
+                            <input type="checkbox" name="cours" value="Java" />Java<br />
+                            <input type="checkbox" name="cours" value="Sql" />Sql
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Mode de paiement</td>
+                        <td><input type="radio" name="paiement" value="Visa" />Visa<br />
+                            <input type="radio" name="paiement" value="Master Card" />Master Card<br />
+                            <input type="radio" name="paiement" value="Check" />Check
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Ville</td>
+                        <td><select name="ville">
+                                <option value="Laval">Laval</option>
+                                <option value="Montreal">Montreal</option>
+                            </select></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><input type="submit" value="Envoyer" /></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </form>
+    </body>
+</html>
