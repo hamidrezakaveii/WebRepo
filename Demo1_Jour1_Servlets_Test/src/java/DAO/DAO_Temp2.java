@@ -67,7 +67,7 @@ public class DAO_Temp2 {
         applySettings(configuration.getProperties());
         SessionFactory sessionFactory = configuration.buildSessionFactory(builder.build());*/
         //sessionFactory = sessionFactory = HibernateUtil.getSessionFactory();
-        //sessionFactory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+        sessionFactory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
         //session = sessionFactory.openSession();
         session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
