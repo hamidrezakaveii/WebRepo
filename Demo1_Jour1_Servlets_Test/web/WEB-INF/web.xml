@@ -12,6 +12,10 @@
         <servlet-name>conversion</servlet-name>
         <servlet-class>controlers.conversion</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DaoAccess</servlet-name>
+        <servlet-class>controlers.DaoAccess</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>FristServlet</servlet-name>
         <url-pattern>/FristServlet</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>conversion</servlet-name>
         <url-pattern>/conversion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DaoAccess</servlet-name>
+        <url-pattern>/DaoAccess</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

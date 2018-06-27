@@ -5,8 +5,10 @@
  */
 package controlers;
 
+import DAO.DAO_Temp2;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.DriverManager;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author HAMIDREZA
  */
-public class conversion extends HttpServlet {
+public class DaoAccess extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,26 +32,19 @@ public class conversion extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        //T(°F) = T(°C) × 1.8 + 32
-        //T(°C) = (T(°F) - 32) / 1.8
 
-        double valeur = Double.parseDouble(request.getParameter("valeur"));
-        String versus = request.getParameter("versus");
-        int result = DAO.DAO_Temp.afficher(versus);
-
-        PrintWriter out = response.getWriter();
-
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet conversion</title>");
+            out.println("<title>Servlet DaoAccess</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>" + valeur + " Farenheit vaut " + result +  " celsius" + "</h1>");
+            out.println("<h1>Servlet DaoAccess at " + DAO.DAO_Temp2.afficher() + "</h1>");
             out.println("</body>");
             out.println("</html>");
- 
-
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -78,17 +73,40 @@ public class conversion extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
-    }
+        System.out.println("this is servlet");
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
+//          int employeeId=Integer.parseInt(request.getParameter("id").trim());
+//          String employeeName=request.getParameter("name").trim();
+//          int salary=Integer.parseInt(request.getParameter("salary").trim());
+        //DAO_Temp2 dao=new DAO_Temp2(); 
+        //boolean b=dao.saveDetails(employeeId, employeeName, salary);
+        String result = DAO_Temp2.afficher();
+        //System.out.println( DriverManager.getDriver("jdbc:derby:"). getClass());
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+
+        out.println("<!DOCTYPE html>");
+        out.println("<html>");
+        out.println("<head>");
+        out.println("<title>Servlet DaoAccess</title>");
+        out.println("</head>");
+        out.println("<body>");
+        out.println("<h1>Record: " + result + "</h1>");
+        out.println("</body>");
+        out.println("</html>");
+
+        /*if(b==true)
+         {
+           out.println("<h1>Employee details sucessfully saved.</h1>");
+            
+         }
+          
+         else
+         {
+             out.println("<h1>Employee details already existed.</h1>"); 
+         }*/
+        out.println("");
+        out.close();
+    }
 
 }
