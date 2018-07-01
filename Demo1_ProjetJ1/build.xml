@@ -7,8 +7,8 @@
 <!-- the Compile on Save feature is turned off for the project. -->
 <!-- You can turn off the Compile on Save (or Deploy on Save) setting -->
 <!-- in the project's Project Properties dialog box.-->
-<project name="projetJ1" default="default" basedir=".">
-    <description>Builds, tests, and runs the project projetJ1.</description>
+<project name="Demo1_ProjetJ1" default="default" basedir=".">
+    <description>Builds, tests, and runs the project Demo1_ProjetJ1.</description>
     <import file="nbproject/build-impl.xml"/>
     <!--
 

@@ -3,14 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controlours;
+package controlers;
 
+import entity.Temp;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.hibernate.Query;
+import org.hibernate.Session;
 
 /**
  *
@@ -32,10 +36,16 @@ public class conversion extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         //T(°F) = T(°C) × 1.8 + 32
         //T(°C) = (T(°F) - 32) / 1.8
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        
+        Query query = session.createQuery("from Temp");
+        
+        List<Temp> result = query.list();
 
-        double valeur = Double.parseDouble(request.getParameter("valeur"));
-        String versus = request.getParameter("versus");
-        int result = DAO.DAO_Temp.afficher(versus);
+        //double valeur = Double.parseDouble(request.getParameter("valeur"));
+        //String versus = request.getParameter("versus");
+        //int resulta = DAO.DAO_Temp.afficher(versus);
 
         PrintWriter out = response.getWriter();
 
@@ -45,7 +55,11 @@ public class conversion extends HttpServlet {
             out.println("<title>Servlet conversion</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>" + valeur + " Farenheit vaut " + result +  " celsius" + "</h1>");
+            for(Temp t: result)
+            {
+               out.println("<h1>" + t.getCelsius() +" - "+ t.getFarenheit()+ "</h1>"); 
+            }
+            
             out.println("</body>");
             out.println("</html>");
  
