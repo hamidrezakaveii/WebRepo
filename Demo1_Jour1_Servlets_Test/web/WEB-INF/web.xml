@@ -16,6 +16,14 @@
         <servlet-name>DaoAccess</servlet-name>
         <servlet-class>controlers.DaoAccess</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>authenticate</servlet-name>
+        <servlet-class>controlers.authenticate</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>welcome</servlet-name>
+        <servlet-class>controlers.welcome</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>FristServlet</servlet-name>
         <url-pattern>/FristServlet</url-pattern>
@@ -31,6 +39,14 @@
     <servlet-mapping>
         <servlet-name>DaoAccess</servlet-name>
         <url-pattern>/DaoAccess</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>authenticate</servlet-name>
+        <url-pattern>/authenticate</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>welcome</servlet-name>
+        <url-pattern>/welcome</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

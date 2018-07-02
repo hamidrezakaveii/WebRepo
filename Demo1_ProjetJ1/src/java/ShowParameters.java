@@ -33,6 +33,8 @@ public class ShowParameters extends HttpServlet {
                 "<TABLE BORDER=1 ALIGN=CENTER>\n" +
                 "<TR BGCOLOR=\"#FFAD00\">\n" +
                 "<TH>Parameter Name<TH>Parameter Value(s)");
+    
+    
     Enumeration paramNames = request.getParameterNames();
     while(paramNames.hasMoreElements()) {
       String paramName = (String)paramNames.nextElement();
@@ -49,7 +51,7 @@ public class ShowParameters extends HttpServlet {
       } else {
         out.println("<UL>");
         for(int i=0; i<paramValues.length; i++) {
-          out.println("<LI>" + paramValues[i]);
+          out.println("<LI>" + paramValues[i]+ "</LI>");
         }
         out.println("</UL>");
       }
