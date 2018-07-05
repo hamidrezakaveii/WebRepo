@@ -16,8 +16,10 @@
             double valeur, resultat;
             String message, unite;
             
-            valeur = Double.parseDouble(request.getParameter("valeur"));
-            unite = request.getParameter("unite");
+            //valeur = Double.parseDouble(request.getParameter("valeur"));
+            valeur = Double.parseDouble((String)request.getAttribute("valeur"));
+            //unite = request.getParameter("unite");
+            unite = (String)request.getAttribute("unite");
             
             if(unite.equals("far")){
                 resultat = 9.0/5.0 * valeur +32;
