@@ -17,7 +17,7 @@
             String message, unite;
             
             //valeur = Double.parseDouble(request.getParameter("valeur"));
-            valeur = Double.parseDouble((String)request.getAttribute("valeur"));
+            valeur = (Double)request.getAttribute("valeur");
             //unite = request.getParameter("unite");
             unite = (String)request.getAttribute("unite");
             

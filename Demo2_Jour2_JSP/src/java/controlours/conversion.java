@@ -32,14 +32,20 @@ public class conversion extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        
-        String valeur = request.getParameter("valeur");
+        String destination="";
+        try{
+        Double valeur = Double.parseDouble(request.getParameter("valeur"));
         String unite = request.getParameter("unite");
         
         request.setAttribute("valeur", valeur);
         request.setAttribute("unite", unite);
         
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/convertirTemp.jsp");
+        destination = "/convertirTemp.jsp";
+        }catch(NumberFormatException ex){
+            destination = "/error.jsp";
+        }
+        
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(destination);
         
         dispatcher.forward(request, response);
         
