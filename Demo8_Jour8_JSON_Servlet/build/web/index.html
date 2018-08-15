@@ -10,27 +10,64 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script>
-            function getData(){
+            function getData() {
                 var xmlhttp = new XMLHttpRequest();
-                var url = "JSONServlet2?c="+ document.getElementById("c").value;
-                
+                var url = "JSONServlet2?c=" + document.getElementById("c").value;
+
                 xmlhttp.onreadystatechange = processData;
                 xmlhttp.open("GET", url, true);
                 xmlhttp.send();
-                
-                function processData(){
-                    if(this.readyState == 4 && this.status ==200){
+
+                function processData() {
+                    if (this.readyState == 4 && this.status == 200) {
                         var myObj = JSON.parse(this.responseText);
                         document.getElementById("demo").innerHTML = myObj.fah;
                     }
                 }
             }
-            </script>
+
+            function getData2() {
+                var xmlhttp = new XMLHttpRequest();
+                var url = "JSONServlet3";
+
+                xmlhttp.onreadystatechange = processData2;
+                xmlhttp.open("GET", url, true);
+                xmlhttp.send();
+
+                function processData2() {
+                    //if (this.readyState == 4 && this.status == 200) {
+                    var myObj = JSON.parse(this.responseText);
+                    document.getElementById("demo2").innerHTML = myObj.firstName;
+                    // }
+                }
+            }
+
+
+            function afficher() {
+                var xmlhttp = new XMLHttpRequest();
+                var url = "JSONServlet3";
+
+                xmlhttp.onreadystatechange = processData3;
+                xmlhttp.open("GET", url, true);
+                xmlhttp.send();
+                function processData3() {
+
+                    var myObj = JSON.parse(this.responseText);
+                    document.getElementById("demonstration").innerHTML = myObj.firstName;
+
+                }
+
+            }
+
+        </script>
     </head>
     <body>
         <div>Affichage de donnees</div>
         Celsius<input type="text" id="c" name="c"/>
         <input type="button" value="Convertir" onclick="getData()"/>
         <p id="demo"></p>
+        <p>*******************************************************************</p>
+        <input type="button" value="Afficher data avec gson" onclick="afficher()"/>
+        <p id="demonstration"></p>
     </body>
 </html>

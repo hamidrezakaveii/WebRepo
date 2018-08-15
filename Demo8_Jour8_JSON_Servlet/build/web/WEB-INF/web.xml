@@ -4,9 +4,17 @@
         <servlet-name>JSONServlet2</servlet-name>
         <servlet-class>JSONServlet2</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>JSONServlet3</servlet-name>
+        <servlet-class>JSONServlet3</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>JSONServlet2</servlet-name>
         <url-pattern>/JSONServlet2</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>JSONServlet3</servlet-name>
+        <url-pattern>/JSONServlet3</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

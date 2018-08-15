@@ -61,28 +61,30 @@ public class myservlet extends HttpServlet {
                 + "<h1 align = \"center\">" + title + "</h1>\n");
         try {
             // Register JDBC driver
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("org.apache.derby.jdbc.ClientDriver");
 
             // Open a connection
             Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            System.out.println("Connected");
 
             // Execute SQL query
             Statement stmt = conn.createStatement();
             String sql;
-            sql = "SELECT id, nom, job FROM Person";
+            sql = "SELECT ID, NOM, JOB FROM PERSON";
             ResultSet rs = stmt.executeQuery(sql);
+            System.out.println("result correct");
             // Extract data from result set
             while (rs.next()) {
                 //Retrieve by column name
-                int id = rs.getInt("id");
-                String nom = rs.getString("nom");
-                String job = rs.getString("job");
+                int id = rs.getInt("ID");
+                String nom = rs.getString("NOM");
+                String job = rs.getString("JOB");
                 
 
                 //Display values
-                out.println("ID: " + id + "<br>");
-                out.println(", Nom: " + nom + "<br>");
-                out.println(", Job: " + job + "<br>");
+                out.println("ID: " + id);
+                out.println(", Nom: " + nom );
+                out.println(", Job: " + job );
                 
             }
             out.println("</body></html>");
