@@ -1,0 +1,3 @@
+<jsp:useBean id="info" class="modele.InfoBean" scope="session"/>
+<jsp:getProperty name="info" property="nom" />
+<jsp:getProperty name="info" property="prenom" />
