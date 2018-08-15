@@ -9,31 +9,71 @@ and open the template in the editor.
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    </head>
+    <body>
+        <div>Affichage de donnees</div>
+        Celsius<input type="text" id="c" name="c"/>
+        <input type="button" id="btn1" value="Convertir" onclick="getData()"/><br />
+        <img id="imag" src="loader.gif" alt=""/>
+        <div id="demo"></div>
+        <p>*******************************************************************</p>
+        <input type="button" value="Afficher data avec gson" onclick="afficher()"/>
+        <p id="demonstration"></p>
+        
         <script>
+            /*function getData() {
+             var xmlhttp = new XMLHttpRequest();
+             var url = "JSONServlet2?c=" + document.getElementById("c").value;
+             
+             xmlhttp.onreadystatechange = processData;
+             xmlhttp.open("GET", url, true);
+             xmlhttp.send();
+             
+             function processData() {
+             if (this.readyState == 4 && this.status == 200) {
+             var myObj = JSON.parse(this.responseText);
+             document.getElementById("demo").innerHTML = myObj.fah;
+             }
+             }
+             }*/
+
+            $("#imag").hide();
             function getData() {
-                var xmlhttp = new XMLHttpRequest();
-                var url = "JSONServlet2?c=" + document.getElementById("c").value;
+                $("#imag").show();
+                $.ajax({
+                    type: "post",
+                    url: "JSONServlet2?c=" + document.getElementById("c").value,
+                    //data: { c :document.getElementById("c").value },
+                    dataType: 'json',
+                    success: function (data) {
+                        processData(data);
+                        $("#imag").hide();
+                    },
+                    error: function (response) {
+                        //Handle error
+                        $("#imag").hide();
 
-                xmlhttp.onreadystatechange = processData;
-                xmlhttp.open("GET", url, true);
-                xmlhttp.send();
-
-                function processData() {
-                    if (this.readyState == 4 && this.status == 200) {
-                        var myObj = JSON.parse(this.responseText);
-                        document.getElementById("demo").innerHTML = myObj.fah;
                     }
-                }
+                });
+            }
+
+            function processData(json) {
+                console.log("function: " + json);
+
+
+                var myObj = json;
+                document.getElementById("demo").innerHTML = myObj.fah;
+
             }
 
             function getData2() {
                 var xmlhttp = new XMLHttpRequest();
                 var url = "JSONServlet3";
-
                 xmlhttp.onreadystatechange = processData2;
                 xmlhttp.open("GET", url, true);
                 xmlhttp.send();
-
                 function processData2() {
                     //if (this.readyState == 4 && this.status == 200) {
                     var myObj = JSON.parse(this.responseText);
@@ -46,7 +86,6 @@ and open the template in the editor.
             function afficher() {
                 var xmlhttp = new XMLHttpRequest();
                 var url = "JSONServlet3";
-
                 xmlhttp.onreadystatechange = processData3;
                 xmlhttp.open("GET", url, true);
                 xmlhttp.send();
@@ -54,20 +93,10 @@ and open the template in the editor.
 
                     var myObj = JSON.parse(this.responseText);
                     document.getElementById("demonstration").innerHTML = myObj.firstName;
-
                 }
 
             }
 
         </script>
-    </head>
-    <body>
-        <div>Affichage de donnees</div>
-        Celsius<input type="text" id="c" name="c"/>
-        <input type="button" value="Convertir" onclick="getData()"/>
-        <p id="demo"></p>
-        <p>*******************************************************************</p>
-        <input type="button" value="Afficher data avec gson" onclick="afficher()"/>
-        <p id="demonstration"></p>
     </body>
 </html>
