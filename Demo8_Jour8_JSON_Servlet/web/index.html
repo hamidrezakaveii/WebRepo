@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            function getData(){
+                var xmlhttp = new XMLHttpRequest();
+                var url = "JSONServlet2?c="+ document.getElementById("c").value;
+                
+                xmlhttp.onreadystatechange = processData;
+                xmlhttp.open("GET", url, true);
+                xmlhttp.send();
+                
+                function processData(){
+                    if(this.readyState == 4 && this.status ==200){
+                        var myObj = JSON.parse(this.responseText);
+                        document.getElementById("demo").innerHTML = myObj.fah;
+                    }
+                }
+            }
+            </script>
+    </head>
+    <body>
+        <div>Affichage de donnees</div>
+        Celsius<input type="text" id="c" name="c"/>
+        <input type="button" value="Convertir" onclick="getData()"/>
+        <p id="demo"></p>
+    </body>
+</html>
