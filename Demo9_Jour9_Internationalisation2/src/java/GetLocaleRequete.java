@@ -37,7 +37,7 @@ public class GetLocaleRequete extends HttpServlet {
         
         request.setAttribute("langue",localeReq.getLanguage());
         
-        RequestDispatcher rd = request.getRequestDispatcher("afficherLocaleRequette.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("pageAvecLocale.jsp");
         rd.forward(request, response);
    
     }
