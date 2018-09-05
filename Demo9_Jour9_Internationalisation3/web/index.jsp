@@ -21,6 +21,7 @@
             
             <fmt:message key="form.langue" />
             <select name="langue" onchange="submit()">
+                <option value=""></option>
                 <option value="fr_CA"><fmt:message key="form.francais" /></option>
                 <option value="en_US"><fmt:message key="form.anglais" /></option>
                 <option value="es_ES"><fmt:message key="form.espagnol" /></option>
