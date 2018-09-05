@@ -18,7 +18,7 @@
             <fmt:message key="count.one" /><br/>
             <fmt:message key="count.two"/><br/>
             <fmt:message key="count.three" /><br/>
-</fmt:bundle>
+        </fmt:bundle>
         <!-- Changer de Locale-->
         <fmt:setLocale value="es_ES"/>
         <fmt:bundle basename="Messages">

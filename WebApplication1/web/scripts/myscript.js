@@ -8,7 +8,7 @@ $("document").ready(function(){
                 dataType: 'json',
                 url:"RechercheServlet",
                 success: function(res){
-                   
+                  
                                         $.each(res, function( i ) {
                                         var s = res[i].nomMarque ;
                                         document.getElementById("input_prov").innerHTML += "<input name='popupProv' id='input_prov' value="+s+" onclick='hideElements(this.id, this.name, this.value)'>";
